@@ -21,7 +21,7 @@ const contactController = {
       await sendContactEmail(newContact.name, newContact.email);
 
       res.status(201).json({
-        message: "Form Submitted",
+        message: "Form submitted",
         status: "Success",
         data: {
           contact: newContact,
