@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/contact", contactRouter);
+app.use("/", contactRouter);
 
 app.use(
   cors({
