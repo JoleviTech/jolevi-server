@@ -16,7 +16,7 @@ const contactController = {
       name: name,
       email: email,
       message: message,
-      submittedAt: submittedAt,
+      submittedAt: Date.now(),
     });
 
     sendContactEmail(req, newContact.name, newContact.email);
