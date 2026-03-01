@@ -8,6 +8,8 @@ const development = {
   jwt_secret_key: process.env.DEV_JWT_SECRET,
   // refresh_secret_key: process.env.DEV_REFRESH_JWT_SECRET,
   PORT: process.env.PORT,
+  RESEND_API_KEY: process.env.RESEND_API_KEY,
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
 };
 
 export default development;
