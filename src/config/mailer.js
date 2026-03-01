@@ -10,7 +10,7 @@ async function sendUserConfirmationEmail(name, email) {
       subject: "Thank you for contacting Jolevi",
       html: `
         <p>Hello ${name},</p>
-        <p>Thank you for reaching out to us at Jolevi. You are sure to hear from us within the next 2 working days.</p>
+        <p>Thank you for reaching out to us at Jolevi. You are sure to hear from us within the next 24hrs.</p>
         <p>Please know that we value and appreciate you.</p>
         <p>Talk to you soon</p>
       `,
@@ -26,7 +26,7 @@ async function sendAdminNotificationEmail(name, email, message) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY); // ✅ inside function
     await resend.emails.send({
-      from: "Jolevi <noreply@yourdomain.com>",
+      from: "Jolevi <noreply@jolevi.com>",
       to: process.env.ADMIN_EMAIL,
       subject: `New Contact Form Submission from ${name}`,
       html: `
