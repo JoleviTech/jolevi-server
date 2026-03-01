@@ -49,13 +49,12 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Email to the user confirming their submission
 async function sendUserConfirmationEmail(name, email) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY); // ✅ inside function
     await resend.emails.send({
-      from: "Jolevi <noreply@yourdomain.com>", // must be a verified domain on Resend
+      from: "Jolevi <noreply@yourdomain.com>",
+      reply_to: process.env.ADMIN_EMAIL,
       to: email,
       subject: "Thank you for contacting Jolevi",
       html: `
@@ -72,12 +71,12 @@ async function sendUserConfirmationEmail(name, email) {
   }
 }
 
-// Email to admin with the full submission details
 async function sendAdminNotificationEmail(name, email, message) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY); // ✅ inside function
     await resend.emails.send({
-      from: "Jolevi <noreply@jolevi.com>",
-      to: process.env.ADMIN_EMAIL, // your admin email in config.env
+      from: "Jolevi <noreply@yourdomain.com>",
+      to: process.env.ADMIN_EMAIL,
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h3>New Contact Form Submission</h3>
