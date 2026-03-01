@@ -4,8 +4,7 @@ async function sendUserConfirmationEmail(name, email) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY); // ✅ inside function
     await resend.emails.send({
-      from: "Jolevi <noreply@jolevi.com>",
-       reply_to: [process.env.ADMIN_EMAIL], // ✅ array format
+      from: "Jolevi <info@jolevi.com>",
       to: email,
       subject: "Thank you for contacting Jolevi",
       html: `
