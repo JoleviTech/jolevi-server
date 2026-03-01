@@ -18,7 +18,11 @@ const contactController = {
       });
 
       // Send contact email
-      await sendContactEmail(newContact.name, newContact.email);
+      // await sendContactEmail(newContact.name, newContact.email);
+      sendContactEmail(newContact.name, newContact.email).catch(err => 
+  console.error("Background email error:", err)
+);
+
 
       res.status(201).json({
         message: "Form submitted",
@@ -36,31 +40,7 @@ const contactController = {
       });
     }
   },
-  // userContactController: async (req, res) => {
-  //   const { error } = contactValidator.validate(req.body);
-  //   if (error) throw error;
-  //   const { name, email, message } = req.body;
-  //   // const emailExists = await Contact.find({ email });
-  //   // if (emailExists.length > 0)
-  //   //   throw new BadUserRequestError("User already exists");
-
-  //   const newContact = await Contact.create({
-  //     name: name,
-  //     email: email,
-  //     message: message,
-  //     submittedAt: Date.now(),
-  //   });
-
-  //  await sendContactEmail(req, newContact.name, newContact.email);
-
-  //   res.status(201).json({
-  //     message: "A new user has filled the contact form",
-  //     status: "Success",
-  //     data: {
-  //       contact: newContact,
-  //     },
-  //   });
-  // },
+ 
 };
 
 export default contactController;
